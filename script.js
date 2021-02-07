@@ -1,7 +1,5 @@
 document.getElementById("btn-submit").addEventListener("click", displayFoods)
 displayDetails = (data, img, name) => {
-
-
     const displayDetails = document.getElementById("detail-foods");
     displayDetails.innerHTML = `
 <img src="${img}">
@@ -20,7 +18,6 @@ displayDetails = (data, img, name) => {
 <li>${data.meals[0].strIngredient10}</li>
 </ul>      
 `
-
 }
 
 function displayFoods() {
@@ -50,7 +47,6 @@ function displayFoods() {
                         .then(res => res.json())
                         .then(data => displayDetails(data, mealImg, mealName))
                 });
-
             }
         })
 }
