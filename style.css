@@ -1,0 +1,46 @@
+.search-bar{
+width:100%;
+margin-top:50px;
+align-items: center;
+}
+
+.search-bar form{
+    margin:0 auto;
+}
+.display-div{
+    border-radius: 20px;
+    background-color: lightgray;
+
+    
+}
+#search-item{
+    width:400px;
+}
+
+img{
+    padding-top: 20px;
+    width:100%;
+}
+
+#food-category{
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 20px;;
+}
+.meal-name{
+    text-align: center;
+    font-size:16px;
+    margin-top:20px;
+}
+
+#detail-foods{
+    width:30%;
+    margin:0 auto;
+    height:fit-content;
+
+}
+
+#detail-foods img{
+     width:100%;
+}
