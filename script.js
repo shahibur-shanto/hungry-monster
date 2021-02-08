@@ -56,7 +56,7 @@ function ingraList(data) {
         list.push(ingredientList[i])
     }
     list.forEach((key, index) => {
-        if (data[key] === null || data[key] === "") {
+        if (data[key] == null || data[key] == "") {
             ul.innerHTML = ul.innerHTML;
 
         }
