@@ -5,28 +5,17 @@ displayDetails = (data, img, name) => {
 <img src="${img}">
 <h5 class="meal-name">${name}</h5>
 <p>Ingredients</p>
-<ul>
-<li>${data.meals[0].strIngredient1}</li>
-<li>${data.meals[0].strIngredient2}</li>
-<li>${data.meals[0].strIngredient3}</li>
-<li>${data.meals[0].strIngredient4}</li>
-<li>${data.meals[0].strIngredient5}</li>
-<li>${data.meals[0].strIngredient6}</li>
-<li>${data.meals[0].strIngredient7}</li>
-<li>${data.meals[0].strIngredient8}</li>
-<li>${data.meals[0].strIngredient9}</li>
-<li>${data.meals[0].strIngredient10}</li>
-</ul>      
 `
+    ingraList(data.meals[0]);
 }
 
 function displayFoods() {
     document.getElementById("detail-foods").innerHTML = "";
     document.getElementById("food-category").innerHTML = "";
-    document.getElementById("error").innerHTML="";
+    document.getElementById("error").innerHTML = "";
     const foodDiv = document.getElementById("food-category");
     const input = document.getElementById("search-item").value;
-    const url =`https://themealdb.com/api/json/v1/1/search.php?f=${input[0]}` 
+    const url = `https://themealdb.com/api/json/v1/1/search.php?f=${input[0]}`
     fetch(url)
         .then(res => res.json())
         .then(data => {
@@ -42,7 +31,7 @@ function displayFoods() {
                 `;
                 foodDiv.appendChild(displayDiv);
 
-                displayDiv.addEventListener('click',  ()=> {
+                displayDiv.addEventListener('click', () => {
                     document.getElementById("detail-foods").innerHTML = "";
                     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`)
                         .then(res => res.json())
@@ -51,8 +40,29 @@ function displayFoods() {
             }
         })
         .catch(error => {
-            document.getElementById("error").innerHTML =   `
+            document.getElementById("error").innerHTML = `
             <h3>Your Food not found. please try another food.</h3>
             `
         })
+}
+
+function ingraList(data) {
+    //const ingredientList = Object.keys(data.meals[0]);
+    const ingredientList = Object.keys(data);
+    let ul = document.createElement("ul");
+
+    let list = [];
+    for (let i = 9; i <= 28; i++) {
+        list.push(ingredientList[i])
+    }
+    list.forEach((key, index) => {
+        if (data[key] === null || data[key] === "") {
+            ul.innerHTML = ul.innerHTML;
+
+        }
+        else {
+            ul.innerHTML += `<li>${data[key]}</li>`;
+        }
+    });
+    document.getElementById("detail-foods").appendChild(ul);
 }
